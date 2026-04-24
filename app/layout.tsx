@@ -13,9 +13,9 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { siteConfig } from "@/content/site"
 import { ClientLayout } from "@/components/client-layout"
+import { getPublicSiteOrigin } from "@/lib/public-site-url"
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jan-chael-joven-and-norenel-rsvp.vercel.app/"
-const canonicalUrl = siteUrl.replace(/\/$/, "")
+const canonicalUrl = getPublicSiteOrigin()
 const desktopHero = "/Details/NewLinkPreviewused.webp"
 const mobileHero = "/Details/NewLinkPreviewused.webp"
 const eventImageUrl = `${canonicalUrl}${desktopHero}`
@@ -141,7 +141,7 @@ export const metadata: Metadata = {
         secureUrl: eventImageUrl,
         width: 1200,
         height: 630,
-        type: "image/jpeg",
+        type: "image/webp",
         alt: `${coupleNames} Wedding Invitation - ${siteConfig.wedding.date}`,
       },
     ],

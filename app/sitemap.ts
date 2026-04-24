@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next"
+import { getPublicSiteOrigin } from "@/lib/public-site-url"
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://jan-chael-joven-and-norenel.weddinginvitationrsvp.com"
+const siteUrl = getPublicSiteOrigin()
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

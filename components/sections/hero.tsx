@@ -41,13 +41,13 @@ export function Hero() {
       }} />
 
       {/* ── Corner florals ── */}
-      <Image src="/decoration/new/left-top.png"     alt="" width={320} height={320} priority aria-hidden
+      <Image src="/decoration/new/left-top.webp"     alt="" width={320} height={320} priority aria-hidden
         className="absolute top-0 left-0 pointer-events-none select-none w-28 sm:w-40 md:w-56 lg:w-64" />
-      <Image src="/decoration/new/right-top.png"    alt="" width={320} height={320} priority aria-hidden
+      <Image src="/decoration/new/right-top.webp"    alt="" width={320} height={320} priority aria-hidden
         className="absolute top-0 right-0 pointer-events-none select-none w-28 sm:w-40 md:w-56 lg:w-64" />
-      <Image src="/decoration/new/left-bottom.png"  alt="" width={320} height={320} aria-hidden
+      <Image src="/decoration/new/left-bottom.webp"  alt="" width={320} height={320} aria-hidden
         className="absolute bottom-0 left-0 pointer-events-none select-none w-28 sm:w-40 md:w-56 lg:w-64" />
-      <Image src="/decoration/new/right-bottom.png" alt="" width={320} height={320} aria-hidden
+      <Image src="/decoration/new/right-bottom.webp" alt="" width={320} height={320} aria-hidden
         className="absolute bottom-0 right-0 pointer-events-none select-none w-28 sm:w-40 md:w-56 lg:w-64" />
 
       {/* ══════════════════════════════════════

@@ -16,9 +16,10 @@ import { ClientLayout } from "@/components/client-layout"
 import { getPublicSiteOrigin } from "@/lib/public-site-url"
 
 const canonicalUrl = getPublicSiteOrigin()
+/** 1200×630 JPEG — og:image:type must match the real file (not webp). */
 const desktopHero = "/Details/LinkPreviewImage.jpg"
 const mobileHero = "/Details/LinkPreviewImage.jpg"
-const eventImageUrl = `${canonicalUrl}${desktopHero}`
+const eventImageUrl = new URL(desktopHero, `${canonicalUrl}/`).toString()
 
 const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`
 const eventTitle = `${coupleNames} - Wedding Invitation`
@@ -137,11 +138,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: eventImageUrl,
-        secureUrl: eventImageUrl,
+        url: desktopHero,
         width: 1200,
         height: 630,
-        type: "image/webp",
+        type: "image/jpeg",
         alt: `${coupleNames} Wedding Invitation - ${siteConfig.wedding.date}`,
       },
     ],
@@ -151,7 +151,7 @@ export const metadata: Metadata = {
     title: `${coupleNames} Wedding Invitation`,
     description:
       `You're invited to the wedding of ${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname} on ${siteConfig.wedding.date}. RSVP, explore their story, and get all the details for the big day! #${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}SayIDo`,
-    images: [eventImageUrl],
+    images: [desktopHero],
     creator: `@${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}`,
     site: `@${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}`,
   },

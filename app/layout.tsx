@@ -16,8 +16,8 @@ import { ClientLayout } from "@/components/client-layout"
 import { getPublicSiteOrigin } from "@/lib/public-site-url"
 
 const canonicalUrl = getPublicSiteOrigin()
-const desktopHero = "/Details/NewLinkPreviewused.webp"
-const mobileHero = "/Details/NewLinkPreviewused.webp"
+const desktopHero = "/Details/LinkPreviewImage.jpg"
+const mobileHero = "/Details/LinkPreviewImage.jpg"
 const eventImageUrl = `${canonicalUrl}${desktopHero}`
 
 const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`

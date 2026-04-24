@@ -4,13 +4,7 @@ import React from "react"
 import { useState, useEffect, useMemo, useRef } from "react"
 import { siteConfig, entourage as staticEntourage, principalSponsors as staticSponsors } from "@/content/site"
 import { Loader2, Users } from "lucide-react"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { PublicImage } from "@/components/ui/public-image"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400"],
-})
+import { Cinzel } from "next/font/google"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -172,6 +166,7 @@ export function Entourage() {
 
   // Intersection Observer for scroll animations
   useEffect(() => {
+    const el = sectionRef.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -181,13 +176,13 @@ export function Entourage() {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    if (el) {
+      observer.observe(el)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (el) {
+        observer.unobserve(el)
       }
     }
   }, [])

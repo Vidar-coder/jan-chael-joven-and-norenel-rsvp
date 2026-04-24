@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useMotionValue, useTransform } from "motion/react"
+import { motion, useMotionValue, useTransform, type PanInfo } from "motion/react"
 import { useState } from "react"
 
 interface CardData {
@@ -29,7 +29,7 @@ function CardRotate({ children, onSendToBack, sensitivity }: CardRotateProps) {
   const rotateX = useTransform(y, [-100, 100], [60, -60])
   const rotateY = useTransform(x, [-100, 100], [-60, 60])
 
-  function handleDragEnd(_: any, info: any) {
+  function handleDragEnd(_event: PointerEvent, info: PanInfo) {
     if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
       onSendToBack()
     } else {

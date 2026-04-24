@@ -80,7 +80,7 @@ export const ImprovedGuestList: React.FC<ImprovedGuestListProps> = ({
       }
       setFormCompanions(newCompanions);
     }
-  }, [formAllowedGuests]);
+  }, [formAllowedGuests, formCompanions]);
 
   // Filter guests
   const filteredGuests = guests.filter(g => {
@@ -300,7 +300,9 @@ export const ImprovedGuestList: React.FC<ImprovedGuestListProps> = ({
         <div className="flex gap-2">
           <select 
             value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value as any)}
+            onChange={(e) =>
+              setStatusFilter(e.target.value as "all" | GuestStatus)
+            }
             className="border border-[#E5DACE] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#BFA27C] text-sm"
           >
             <option value="all">All Status</option>

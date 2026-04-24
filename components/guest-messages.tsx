@@ -15,11 +15,7 @@ interface Message {
   message: string
 }
 
-interface GuestMessagesProps {
-  guests?: any[]
-}
-
-export function GuestMessages({ guests = [] }: GuestMessagesProps) {
+export function GuestMessages() {
   const [searchQuery, setSearchQuery] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)

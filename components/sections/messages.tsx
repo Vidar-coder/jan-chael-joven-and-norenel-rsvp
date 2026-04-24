@@ -2,7 +2,6 @@
 
 import { useRef, useState, useCallback, useEffect } from "react"
 import { MessageCircle, Heart, Sparkles, Send } from "lucide-react"
-import { PublicImage } from "@/components/ui/public-image"
 import { Section } from "@/components/section"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -10,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import MessageWallDisplay from "./message-wall-display"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
+import { Cormorant_Garamond } from "next/font/google"
 import { siteConfig } from "@/content/site"
 
 const cormorant = Cormorant_Garamond({
@@ -18,14 +17,8 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600"],
 })
 
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: "400",
-})
-
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 const MSG_COLOR = "var(--color-motif-deep)"
-const DECO_FILTER = "brightness(0) invert(1)"
 
 interface Message {
   timestamp: string
@@ -89,7 +82,7 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
       
       if (onSuccess) onSuccess()
       if (onMessageSent) onMessageSent()
-    } catch (error) {
+    } catch {
       toast({
         title: "Unable to send message",
         description: "Please try again in a moment",

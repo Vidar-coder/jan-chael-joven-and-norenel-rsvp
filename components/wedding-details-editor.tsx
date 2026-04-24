@@ -6,13 +6,10 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import {
   Calendar,
-  MapPin,
-  Clock,
   Heart,
   Church,
   Utensils,
   Phone,
-  Mail,
   Users,
   Save,
   Loader2,
@@ -23,6 +20,7 @@ import {
   Trash2,
   X,
 } from "lucide-react"
+import { getErrorMessage } from "@/lib/utils"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface WeddingDetails {
@@ -199,9 +197,9 @@ export function WeddingDetailsEditor() {
       
       setWeddingDetails(cleanData)
       setHasChanges(false)
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error fetching wedding details:", err)
-      setError(err.message || "Failed to load wedding details")
+      setError(getErrorMessage(err) || "Failed to load wedding details")
     } finally {
       setIsLoading(false)
     }
@@ -227,9 +225,9 @@ export function WeddingDetailsEditor() {
       setSuccessMessage("Wedding details saved successfully!")
       setHasChanges(false)
       setTimeout(() => setSuccessMessage(null), 3000)
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error saving wedding details:", err)
-      setError(err.message || "Failed to save wedding details")
+      setError(getErrorMessage(err) || "Failed to save wedding details")
     } finally {
       setIsSaving(false)
     }
@@ -253,9 +251,9 @@ export function WeddingDetailsEditor() {
       setShowDeleteConfirm(false)
       setSuccessMessage("Wedding details cleared successfully!")
       setTimeout(() => setSuccessMessage(null), 3000)
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error clearing wedding details:", err)
-      setError(err.message || "Failed to clear wedding details")
+      setError(getErrorMessage(err) || "Failed to clear wedding details")
     } finally {
       setIsDeleting(false)
     }
@@ -263,14 +261,19 @@ export function WeddingDetailsEditor() {
 
   const updateField = (path: string, value: string) => {
     setWeddingDetails((prev) => {
-      const updated = { ...prev }
+      const next = structuredClone(prev)
       const keys = path.split(".")
-      let current: any = updated
+      let current: Record<string, unknown> = next as unknown as Record<string, unknown>
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        const key = keys[i]!
+        const step = current[key]
+        if (typeof step !== "object" || step === null) {
+          current[key] = {}
+        }
+        current = current[key] as Record<string, unknown>
       }
-      current[keys[keys.length - 1]] = value
-      return updated
+      current[keys[keys.length - 1]!] = value
+      return next
     })
     setHasChanges(true)
   }

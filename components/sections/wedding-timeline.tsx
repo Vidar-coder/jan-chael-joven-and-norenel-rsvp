@@ -5,13 +5,8 @@ import { Section } from "@/components/section"
 import { siteConfig } from "@/content/site"
 import { MapPin } from "lucide-react"
 import { motion } from "motion/react"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
+import { Cinzel } from "next/font/google"
 import { PublicImage } from "@/components/ui/public-image"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400"],
-})
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -30,8 +25,6 @@ const receptionTime = siteConfig.reception.time
 const TIMELINE_TEXT = "var(--color-motif-cream)"
 // SVG stroke — CSS vars are not valid SVG attributes
 const TIMELINE_SVG_STROKE = "#FFFFFF"
-// White tint for corner florals — section sits on dark background
-const DECO_FILTER_WHITE = "brightness(0) saturate(100%) invert(1)"
 
 type TimelineIcon = React.ComponentType<React.SVGProps<SVGSVGElement>>
 
@@ -52,7 +45,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "Please arrive on time to find your seat, settle in, and get ready for the celebration.",
     location: ceremonyVenue,
     icon: GuestsIcon,
-    imageSrc: "/weddingtimeline/arrivalimage.png",
+    imageSrc: "/weddingtimeline/arrivalimage.webp",
   },
   {
     time: ceremonyTime,
@@ -60,7 +53,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: `Join us as ${groomNickname} & ${brideNickname} exchange vows and begin their life together.`,
     location: ceremonyVenue,
     icon: RingsIcon,
-    imageSrc: "/weddingtimeline/WeddingCeremony.png",
+    imageSrc: "/weddingtimeline/WeddingCeremony.webp",
   },
   {
     time: "6:00 PM",
@@ -68,7 +61,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "We are having an unplugged ceremony, meaning we kindly ask all guests to put away their phones and cameras. We want everyone to be fully in the moment with us. Don't worry—our professional photographer will capture all the special moments, and we'll be happy to share them with you later!",
     location: ceremonyVenue,
     icon: RingsIcon,
-    imageSrc: "/weddingtimeline/PhotoSession.png",
+    imageSrc: "/weddingtimeline/PhotoSession.webp",
   },
   {
     time: "7:00 PM",
@@ -76,7 +69,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "Enjoy drinks and light bites as we transition into the reception and mingle with guests.",
     location: receptionVenue,
     icon: CocktailIcon,
-    imageSrc: "/weddingtimeline/CockTailHour.png",
+    imageSrc: "/weddingtimeline/CockTailHour.webp",
   },
   {
     time: receptionTime,
@@ -84,7 +77,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: `Celebrate the grand entrance of ${groomNickname} & ${brideNickname} and the start of the evening festivities.`,
     location: receptionVenue,
     icon: FireworksIcon,
-    imageSrc: "/weddingtimeline/reception welcom.png",
+    imageSrc: "/weddingtimeline/reception welcom.webp",
   },
   {
     time: "9:00 PM",
@@ -92,7 +85,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "Share a relaxed meal together as we continue the celebration.",
     location: receptionVenue,
     icon: DinnerIcon,
-    imageSrc: "/weddingtimeline/DinnerService.png",
+    imageSrc: "/weddingtimeline/DinnerService.webp",
   },
   {
     time: "10:00 PM",
@@ -100,7 +93,7 @@ const timelineEvents: TimelineEvent[] = [
     // description: "Let's dance the night away and celebrate this new chapter!",
     location: receptionVenue,
     icon: DanceIcon,
-    imageSrc: "/weddingtimeline/SendOff.png",
+    imageSrc: "/weddingtimeline/SendOff.webp",
   },
 ]
 

@@ -13,18 +13,30 @@ const cinzel = Cinzel({
   weight: "400",
 })
 
-// YouTube Player API types
+type YTPlayerInstance = { destroy: () => void }
+
+// YouTube iframe API (minimal typing; no @types package in project)
 declare global {
   interface Window {
-    YT: any
-    onYouTubeIframeAPIReady: () => void
+    YT?: {
+      Player: new (
+        el: HTMLElement | null,
+        config: {
+          events?: {
+            onReady?: () => void
+            onStateChange?: (event: { data: number }) => void
+          }
+        }
+      ) => YTPlayerInstance
+    }
+    onYouTubeIframeAPIReady?: () => void
   }
 }
 
 export function CoupleVideo() {
   // State to track if user has clicked to play the video
   const [hasClicked, setHasClicked] = useState(false)
-  const playerRef = useRef<any>(null)
+  const playerRef = useRef<YTPlayerInstance | null>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const { pauseMusic, resumeMusic } = useAudio()
   // https://youtube.com/shorts/73xBuXrTWN4
@@ -48,13 +60,13 @@ export function CoupleVideo() {
 
     const initPlayer = () => {
       if (window.YT && window.YT.Player && iframeRef.current) {
-        playerRef.current = new window.YT.Player(iframeRef.current, {
+        playerRef.current = new window.YT!.Player(iframeRef.current, {
           events: {
-            onReady: (_event: any) => {
+            onReady: () => {
               // Pause background music when video is ready
               pauseMusic()
             },
-            onStateChange: (event: any) => {
+            onStateChange: (event: { data: number }) => {
               // YouTube player states:
               // -1 (unstarted)
               // 0 (ended)
@@ -91,7 +103,7 @@ export function CoupleVideo() {
       if (playerRef.current && playerRef.current.destroy) {
         try {
           playerRef.current.destroy()
-        } catch (e) {
+        } catch {
           // Ignore errors during cleanup
         }
       }
@@ -187,7 +199,7 @@ export function CoupleVideo() {
                     onClick={handleThumbnailClick}
                   >
                     <PublicImage
-                      src="/Details/PlayButton.png"
+                      src="/Details/PlayButton.webp"
                       alt="Video thumbnail"
                       fill
                       className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700"

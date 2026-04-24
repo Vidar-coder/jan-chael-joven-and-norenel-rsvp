@@ -30,14 +30,6 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
     return () => window.removeEventListener("keydown", onKey)
   }, [filtered.length, lightboxIdx])
 
-  // Ensure already-cached images appear (loaded state from complete)
-  const setImgRef = (el: HTMLImageElement | null, src: string) => {
-    if (!el) return
-    if (el.complete) {
-      setLoaded((l) => (l[src] ? l : { ...l, [src]: true }))
-    }
-  }
-
   const getCardAspect = (image: ImageItem) => {
     return image.category === "desktop" ? "aspect-[4/3]" : "aspect-[4/5]"
   }

@@ -19,13 +19,7 @@ import {
   Users,
 } from "lucide-react"
 import { Cinzel } from "next/font/google"
-import { Cormorant_Garamond } from "next/font/google"
 import { siteConfig } from "@/content/site"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400"],
-})
 
 const cinzel = Cinzel({
   subsets: ["latin"],

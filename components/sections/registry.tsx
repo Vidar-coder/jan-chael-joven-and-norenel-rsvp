@@ -1,22 +1,9 @@
 "use client"
 
-import { useState } from "react"
 import { Section } from "@/components/section"
-import { Cinzel } from "next/font/google"
 import { siteConfig } from "@/content/site"
-import { PublicImage } from "@/components/ui/public-image"
-
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-})
-
-const GCASH_QR = Object.values(siteConfig?.giftRegistry ?? {})
 
 export function Registry() {
-  const [activeQr, setActiveQr] = useState(GCASH_QR[0]?.id ?? "")
-  const activeItem = GCASH_QR.find((i) => i.id === activeQr) ?? GCASH_QR[0]
-
   return (
     <Section
       id="registry"

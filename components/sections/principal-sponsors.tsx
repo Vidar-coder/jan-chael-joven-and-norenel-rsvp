@@ -6,6 +6,7 @@ import { Section } from "@/components/section"
 import { Loader2, Users } from "lucide-react"
 import { Cormorant_Garamond } from "next/font/google"
 import { siteConfig } from "@/content/site"
+import { getErrorMessage } from "@/lib/utils"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -76,9 +77,9 @@ export function PrincipalSponsors() {
       if (!res.ok) throw new Error("Failed to load principal sponsors")
       const data: PrincipalSponsor[] = await res.json()
       setSponsors(data)
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e)
-      setError(e?.message || "Failed to load principal sponsors")
+      setError(getErrorMessage(e) || "Failed to load principal sponsors")
     } finally {
       setIsLoading(false)
     }
@@ -90,6 +91,7 @@ export function PrincipalSponsors() {
 
   // Intersection Observer for scroll animations
   useEffect(() => {
+    const el = sectionRef.current
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -99,13 +101,13 @@ export function PrincipalSponsors() {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    if (el) {
+      observer.observe(el)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (el) {
+        observer.unobserve(el)
       }
     }
   }, [])

@@ -1,6 +1,14 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Great_Vibes, Inter, Imperial_Script, Cinzel } from "next/font/google"
+import {
+  Great_Vibes,
+  Inter,
+  Imperial_Script,
+  Cinzel,
+  Lavishly_Yours,
+  Style_Script,
+  Crimson_Text,
+} from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { siteConfig } from "@/content/site"
@@ -62,6 +70,24 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400", variable: "--font-serif" })
 const imperialScript = Imperial_Script({ subsets: ["latin"], weight: "400", variable: "--font-imperial-script" })
 const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-cinzel" })
+const lavishlyYours = Lavishly_Yours({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-lavishly-yours",
+})
+const styleScript = Style_Script({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-style-script",
+})
+const crimsonText = Crimson_Text({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-crimson-text",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(canonicalUrl),
@@ -167,22 +193,14 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#D2A4A4" />
         <meta name="format-detection" content="telephone=yes,email=no,address=no" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Kapakana:wght@300..400&display=swap" rel="stylesheet" />
         <link rel="preload" as="image" href={mobileHero} media="(max-width: 767px)" />
         <link rel="preload" as="image" href={desktopHero} media="(min-width: 768px)" />
-        <link rel="preload" as="image" href="/Details/ceremony1.png" />
-        <link rel="preload" as="image" href="/Details/reception.png" />
+        <link rel="preload" as="image" href="/Details/ceremony1.webp" />
+        <link rel="preload" as="image" href="/Details/reception.webp" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body
-       className={`${inter.variable} ${greatVibes.variable} ${imperialScript.variable} ${cinzel.variable} font-inter antialiased text-foreground`}
+       className={`${inter.variable} ${greatVibes.variable} ${imperialScript.variable} ${cinzel.variable} ${lavishlyYours.variable} ${styleScript.variable} ${crimsonText.variable} font-inter antialiased text-foreground`}
       >
         <ClientLayout>
           {children}

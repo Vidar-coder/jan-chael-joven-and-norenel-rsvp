@@ -35,17 +35,18 @@ export async function GET() {
     console.log('Raw data from Google Script:', data)
 
     // Helper to safely coerce any value to a trimmed string
-    const safeString = (value: any): string => {
-      if (value === null || value === undefined) return ''
-      if (typeof value === 'number') return String(value)
-      if (typeof value === 'string') return value.trim()
+    const safeString = (value: unknown): string => {
+      if (value === null || value === undefined) return ""
+      if (typeof value === "number") return String(value)
+      if (typeof value === "string") return value.trim()
       return String(value).trim()
     }
 
     // Normalize data - ensure consistent keys and Guest is preserved (including numbers)
     const normalizedData = Array.isArray(data)
-      ? data.map((request: any) => {
-          const guestRaw = request?.Guest ?? request?.guest ?? ''
+      ? data.map((raw: unknown) => {
+          const request = raw as Record<string, unknown>
+          const guestRaw = request?.Guest ?? request?.guest ?? ""
           return {
             Name: safeString(request?.Name ?? request?.name),
             Email: safeString(request?.Email ?? request?.email),

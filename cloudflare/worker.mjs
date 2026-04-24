@@ -17,8 +17,8 @@ const IS_IMAGE = /\.(png|jpe?g|gif|webp|svg|ico|avif|bmp)(\?|#|$)/i
  * @param {{ ORIGIN?: string, SITE_HOST?: string }} env
  * @param {ExecutionContext} _ctx
  */
-export default {
-  async fetch(request, env, _ctx) {
+const worker = {
+  async fetch(request, env) {
     if (request.method !== "GET" && request.method !== "HEAD") {
       return passThrough(request, env)
     }
@@ -41,6 +41,8 @@ export default {
     return passThrough(request, env)
   },
 }
+
+export default worker
 
 /**
  * @param {Request} request

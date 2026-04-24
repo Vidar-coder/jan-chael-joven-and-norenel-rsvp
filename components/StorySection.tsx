@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Cinzel, Cormorant_Garamond } from "next/font/google";
+import { Cinzel } from "next/font/google";
 import { PublicImage } from '@/components/ui/public-image';
 
 import { TornPaperEdge } from './TornPaperEdge';
@@ -9,19 +9,12 @@ const cinzel = Cinzel({
   weight: "400",
 })
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-})
-
 interface StorySectionProps {
   imageSrc: string;
   title?: string;
   text: React.ReactNode;
   layout: 'image-left' | 'image-right';
   theme: 'dark' | 'light';
-  isFirst?: boolean;
-  isLast?: boolean;
 }
 
 export const StorySection: React.FC<StorySectionProps> = ({ 
@@ -30,8 +23,6 @@ export const StorySection: React.FC<StorySectionProps> = ({
   text, 
   layout, 
   theme,
-  isFirst = false,
-  isLast = false
 }) => {
   const isDark = theme === 'dark';
   // Palette lives in globals.css → @theme inline → --color-motif-*
@@ -116,7 +107,7 @@ export const StorySection: React.FC<StorySectionProps> = ({
             </div>
           </div>
           {/* Text Column - Approx 55% width on mobile */}
-          <div className={`w-[55%] md:w-5/12 ${textColor}`}>
+          <div className={`w-[55%] md:w-5/12 ${textColor} ${textAlignment}`}>
             {title && (
               <h2 className={`${cinzel.className} text-2xl md:text-6xl mb-2 md:mb-6 tracking-wide leading-none
                 transition-all duration-1000 delay-500

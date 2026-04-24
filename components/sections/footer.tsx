@@ -1,16 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion } from "motion/react"
 import { Instagram, Twitter, Facebook, MapPin, Calendar, Clock, Heart, Music2 } from "lucide-react"
 import { siteConfig } from "@/content/site"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { PublicImage } from "@/components/ui/public-image"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400"],
-})
+import { Cinzel } from "next/font/google"
+import Image from "next/image"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -47,13 +42,15 @@ export function Footer() {
   const receptionVenue = siteConfig.reception.venue
   // Combined venue when same for both (e.g. Altamers Mountain Resort)
   const isSameVenue = ceremonyVenue === receptionVenue
-  const combinedVenue = isSameVenue ? ceremonyVenue : null
 
-  const quotes = [
-    `"I have found the one whom my soul loves." – Song of Solomon 3:4`,
-    "Welcome to our wedding website! We've found a love that's a true blessing, and we give thanks to God for writing the beautiful story of our journey together.",
-    "Thank you for your love, prayers, and support. We can't wait to celebrate this joyful day together!",
-  ]
+  const quotes = useMemo(
+    () => [
+      `"I have found the one whom my soul loves." – Song of Solomon 3:4`,
+      "Welcome to our wedding website! We've found a love that's a true blessing, and we give thanks to God for writing the beautiful story of our journey together.",
+      "Thank you for your love, prayers, and support. We can't wait to celebrate this joyful day together!",
+    ],
+    []
+  )
 
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
   const [displayedText, setDisplayedText] = useState("")
@@ -133,16 +130,16 @@ export function Footer() {
       <footer className="relative z-10 mt-12 sm:mt-16 overflow-hidden">
       {/* Corner decorations — deep brown tint (hero style) */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-y-[-1]" priority={false}  />
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-y-[-1]" priority={false}  />
       </div>
       <div className="absolute right-0 top-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-x-[-1] scale-y-[-1]" priority={false}  />
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-x-[-1] scale-y-[-1]" priority={false}  />
       </div>
       <div className="absolute left-0 bottom-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px]" priority={false} />
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px]" priority={false} />
       </div>
       <div className="absolute right-0 bottom-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-x-[-1]" priority={false}/>
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[160px] sm:max-w-[200px] md:max-w-[240px] scale-x-[-1]" priority={false}/>
       </div>
       
       {/* Monogram / Couple Illustration - centered at top */}
@@ -154,7 +151,7 @@ export function Footer() {
           className="relative"
         >
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 opacity-95">
-            <PublicImage
+            <Image
               src={siteConfig.couple.monogram}
               alt={`${groomNickname} & ${brideNickname} monogram`}
               fill

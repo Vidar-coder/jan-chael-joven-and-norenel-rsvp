@@ -36,15 +36,6 @@ export function Details() {
   const [copiedItems, setCopiedItems] = useState<Set<string>>(new Set())
   const [currentReceptionImageIndex, setCurrentReceptionImageIndex] = useState(0)
   const [showImageModal, setShowImageModal] = useState<string | null>(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [rotationOffset, setRotationOffset] = useState(0)
-  
-  const coupleImages = [
-    "/mobile-background/couple (1).webp",
-    "/mobile-background/couple (2).webp",
-    "/mobile-background/couple (3).webp",
-    "/mobile-background/couple (4).webp",
-  ]
 
   const receptionImages = siteConfig.reception.image
 
@@ -53,17 +44,7 @@ export function Details() {
       setCurrentReceptionImageIndex((prev) => (prev + 1) % receptionImages.length)
     }, 3000)
     return () => clearInterval(timer)
-  }, [])
-
-  // Gentle reminders couple photos — subtle carousel + wobble animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % coupleImages.length)
-      setRotationOffset((prev) => (prev + 10) % 360)
-    }, 2600)
-
-    return () => clearInterval(interval)
-  }, [coupleImages.length])
+  }, [receptionImages.length])
 
   const copyToClipboard = async (text: string, itemId: string) => {
     try {
@@ -96,8 +77,6 @@ export function Details() {
   const receptionLocation = receptionVenue
   const formattedCeremonyDate = siteConfig.ceremony.date
   const formattedReceptionDate = siteConfig.ceremony.date // reception follows ceremony on same day
-
-  const DECO_FILTER = "brightness(0) saturate(100%) invert(22%) sepia(88%) saturate(1800%) hue-rotate(185deg) brightness(90%) contrast(105%)"
 
   const openInMaps = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer')

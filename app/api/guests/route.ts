@@ -1,4 +1,5 @@
 import { siteConfig } from "@/content/site"
+import { getErrorMessage } from "@/lib/utils"
 import { type NextRequest, NextResponse } from "next/server"
 
 // ⚠️ IMPORTANT: Replace this with your NEW Google Apps Script deployment URL
@@ -54,22 +55,27 @@ export async function GET() {
     }
 
     // Normalize guest data to ensure consistent format
-    const normalizedData = Array.isArray(data) ? data.map((guest: any) => ({
-      ...guest,
-      id: String(guest.id), // Convert numeric IDs to strings for consistency
-      role: guest.role || 'Guest',
-      email: guest.email || '',
-      contact: guest.contact || '',
-      message: guest.message || '',
-      allowedGuests: parseInt(guest.allowedGuests) || 1,
-      companions: Array.isArray(guest.companions) ? guest.companions : [],
-      tableNumber: guest.tableNumber || '',
-      isVip: guest.isVip === true || guest.isVip === 'TRUE',
-      status: guest.status || 'pending',
-      addedBy: guest.addedBy || '',
-      createdAt: guest.createdAt || new Date().toISOString(),
-      updatedAt: guest.updatedAt || new Date().toISOString(),
-    })) : []
+    const normalizedData = Array.isArray(data)
+      ? data.map((raw: unknown) => {
+          const guest = raw as Record<string, unknown>
+          return {
+            ...guest,
+            id: String(guest.id), // Convert numeric IDs to strings for consistency
+            role: (guest.role as string) || "Guest",
+            email: (guest.email as string) || "",
+            contact: (guest.contact as string) || "",
+            message: (guest.message as string) || "",
+            allowedGuests: parseInt(String(guest.allowedGuests), 10) || 1,
+            companions: Array.isArray(guest.companions) ? guest.companions : [],
+            tableNumber: (guest.tableNumber as string) || "",
+            isVip: guest.isVip === true || guest.isVip === "TRUE",
+            status: (guest.status as string) || "pending",
+            addedBy: (guest.addedBy as string) || "",
+            createdAt: (guest.createdAt as string) || new Date().toISOString(),
+            updatedAt: (guest.updatedAt as string) || new Date().toISOString(),
+          }
+        })
+      : []
 
     return NextResponse.json(normalizedData, { status: 200 })
   } catch (error) {
@@ -191,10 +197,10 @@ export async function PUT(request: NextRequest) {
     }
 
     return NextResponse.json(data, { status: 200 })
-  } catch (error: any) {
-    console.error('Error updating guest:', error)
+  } catch (error: unknown) {
+    console.error("Error updating guest:", error)
     return NextResponse.json(
-      { error: error?.message || 'Failed to update guest' },
+      { error: getErrorMessage(error) || "Failed to update guest" },
       { status: 500 }
     )
   }

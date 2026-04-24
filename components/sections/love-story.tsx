@@ -5,8 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { StorySection } from '@/components/StorySection';
 import { Cinzel } from "next/font/google";
-import { siteConfig } from '@/content/site';
-
 const cinzel = Cinzel({
   subsets: ["latin"],
   weight: "400",
@@ -20,28 +18,28 @@ export function LoveStory() {
     <div className="relative min-h-screen bg-motif-cream overflow-x-hidden">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <Image
-          src="/decoration/new/left-top.png"
+          src="/decoration/new/left-top.webp"
           alt=""
           width={260}
           height={260}
           className="absolute top-0 left-0 w-24 sm:w-32 md:w-40 lg:w-48 opacity-70"
         />
         <Image
-          src="/decoration/new/right-top.png"
+          src="/decoration/new/right-top.webp"
           alt=""
           width={260}
           height={260}
           className="absolute top-0 right-0 w-24 sm:w-32 md:w-40 lg:w-48 opacity-70"
         />
         <Image
-          src="/decoration/new/left-bottom.png"
+          src="/decoration/new/left-bottom.webp"
           alt=""
           width={300}
           height={300}
           className="absolute bottom-0 left-0 w-28 sm:w-36 md:w-44 lg:w-52 opacity-75"
         />
         <Image
-          src="/decoration/new/right-bottom.png"
+          src="/decoration/new/right-bottom.webp"
           alt=""
           width={300}
           height={300}
@@ -75,7 +73,6 @@ export function LoveStory() {
       <StorySection
         theme="light"
         layout="image-left"
-        isFirst={true}
         title="Two Souls Shaped by the Past"
         imageSrc="/mobile-background/couple (3).webp"
         text={
@@ -107,7 +104,6 @@ export function LoveStory() {
       <StorySection
         theme="light"
         layout="image-left"
-        isLast={true}
         imageSrc="/mobile-background/couple (15).webp"
         // title="The Proposal (2025)"
         text={
@@ -140,7 +136,6 @@ export function LoveStory() {
       <StorySection
         theme="light"
         layout="image-left"
-        isLast={true}
         imageSrc="/mobile-background/couple (11).webp"
         // title="The Proposal (2025)"
         text={

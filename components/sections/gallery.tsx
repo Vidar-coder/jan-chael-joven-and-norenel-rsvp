@@ -3,9 +3,10 @@
 import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
+import { Cinzel } from "next/font/google"
 import { Section } from "@/components/section"
-import { PublicImage } from "@/components/ui/public-image"
+import Image from "next/image"
+
 
 /** Falls back to the local public path on any load error (e.g. not yet uploaded). */
 function onImgError(e: React.SyntheticEvent<HTMLImageElement>, fallback: string) {
@@ -22,11 +23,6 @@ function onImgError(e: React.SyntheticEvent<HTMLImageElement>, fallback: string)
 // CSS filter approximation of --color-motif-deep (sage green). Tune if needed.
 const GALLERY_DECO_FILTER = ""
   // "brightness(0) saturate(100%) invert(37%) sepia(20%) saturate(500%) hue-rotate(80deg) brightness(88%) contrast(92%)"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400"],
-})
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -141,8 +137,8 @@ export function Gallery() {
       >
       {/* Corner floral decoration - aligned with Details section */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        <PublicImage
-          src="/decoration/new/left-top.png"
+        <Image
+          src="/decoration/new/left-top.webp"
           alt=""
           width={300}
           height={300}
@@ -150,8 +146,8 @@ export function Gallery() {
           style={{ filter: GALLERY_DECO_FILTER }}
           priority={false}
         />
-        <PublicImage
-          src="/decoration/new/right-top.png"
+        <Image
+          src="/decoration/new/right-top.webp"
           alt=""
           width={300}
           height={300}
@@ -159,8 +155,8 @@ export function Gallery() {
           style={{ filter: GALLERY_DECO_FILTER }}
           priority={false}
         />
-        <PublicImage
-          src="/decoration/new/left-bottom.png"
+        <Image
+          src="/decoration/new/left-bottom.webp"
           alt=""
           width={300}
           height={300}
@@ -168,8 +164,8 @@ export function Gallery() {
           style={{ filter: GALLERY_DECO_FILTER }}
           priority={false}
         />
-        <PublicImage
-          src="/decoration/new/right-bottom.png"
+        <Image
+          src="/decoration/new/right-bottom.webp"
           alt=""
           width={300}
           height={300}

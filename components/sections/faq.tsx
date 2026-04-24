@@ -3,18 +3,13 @@
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { Section } from "@/components/section"
-import { PublicImage } from "@/components/ui/public-image"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
+import Image from "next/image"
+import { Cormorant_Garamond } from "next/font/google"
 import { siteConfig } from "@/content/site"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
-})
-
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: ["400", "600"],
 })
 
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
@@ -152,22 +147,22 @@ export function FAQ() {
       <Section id="faq" className="relative z-10 py-12 md:py-16 lg:py-20 overflow-hidden">
       {/* Corner decorations — soft brown tint */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.png" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20 scale-y-[-1]" priority={false} 
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20 scale-y-[-1]" priority={false} 
         // style={{ filter: "brightness(0) saturate(100%) invert(22%) sepia(88%) saturate(1800%) hue-rotate(185deg) brightness(90%) contrast(105%)" }} 
         />
       </div>
       <div className="absolute right-0 top-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.png" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20 scale-x-[-1] scale-y-[-1]" priority={false} 
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20 scale-x-[-1] scale-y-[-1]" priority={false} 
         // style={{ filter: "brightness(0) saturate(100%) invert(22%) sepia(88%) saturate(1800%) hue-rotate(185deg) brightness(90%) contrast(105%)" }}
          />
       </div>
       <div className="absolute left-0 bottom-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.png" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20" priority={false} 
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20" priority={false} 
         // style={{ filter: "brightness(0) saturate(100%) invert(22%) sepia(88%) saturate(1800%) hue-rotate(185deg) brightness(90%) contrast(105%)" } } 
         />
       </div>
       <div className="absolute right-0 bottom-0 z-0 pointer-events-none">
-        <PublicImage src="/decoration/flower-decoration-left-bottom-corner2.png" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20 scale-x-[-1]" priority={false} 
+        <Image src="/decoration/flower-decoration-left-bottom-corner2.webp" alt="" width={300} height={300} className="w-auto h-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] opacity-20 scale-x-[-1]" priority={false} 
         // style={{ filter: "brightness(0) saturate(100%) invert(22%) sepia(88%) saturate(1800%) hue-rotate(185deg) brightness(90%) contrast(105%)" }}
         />
       </div>

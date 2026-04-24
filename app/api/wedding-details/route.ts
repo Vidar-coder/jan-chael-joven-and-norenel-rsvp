@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { siteConfig } from "@/content/site"
+import { getErrorMessage } from "@/lib/utils"
 
 // Update this with your deployed Google Apps Script URL for Wedding Details
 const GOOGLE_SCRIPT_URL = siteConfig.googleAPI.weddingDetails
@@ -203,10 +204,10 @@ export async function PUT(request: NextRequest) {
     }
 
     return NextResponse.json(data, { status: 200 })
-  } catch (error: any) {
-    console.error('Error updating wedding details:', error)
+  } catch (error: unknown) {
+    console.error("Error updating wedding details:", error)
     return NextResponse.json(
-      { error: error?.message || 'Failed to update wedding details' },
+      { error: getErrorMessage(error) || "Failed to update wedding details" },
       { status: 500 }
     )
   }
@@ -229,10 +230,10 @@ export async function DELETE() {
 
     const data = await response.json()
     return NextResponse.json(data, { status: 200 })
-  } catch (error: any) {
-    console.error('Error clearing wedding details:', error)
+  } catch (error: unknown) {
+    console.error("Error clearing wedding details:", error)
     return NextResponse.json(
-      { error: error?.message || 'Failed to clear wedding details' },
+      { error: getErrorMessage(error) || "Failed to clear wedding details" },
       { status: 500 }
     )
   }

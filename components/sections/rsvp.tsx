@@ -50,7 +50,7 @@ export function RSVP({ onSuccess }: RSVPFormProps) {
       setIsSubmitting(false)
       setIsSubmitted(true)
       setTimeout(() => setIsSubmitted(false), 3000)
-    } catch (error) {
+    } catch {
       setIsSubmitting(false)
       setError("Something went wrong. Please try again.")
     }

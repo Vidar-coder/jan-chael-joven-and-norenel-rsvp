@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react"
 import { siteConfig } from "@/content/site"
+import { getErrorMessage } from "@/lib/utils"
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import { DashboardOverview } from "@/components/dashboard-overview"
 import { ImprovedGuestList, Guest } from "@/components/improved-guest-list"
@@ -280,9 +281,9 @@ export default function DashboardPage() {
       setSuccessMessage(`✓ ${guestData.name} added successfully!`)
       setTimeout(() => setSuccessMessage(null), 3000)
       await fetchGuests()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error adding guest:", error)
-      setError(`Failed to add guest: ${error.message}`)
+      setError(`Failed to add guest: ${getErrorMessage(error)}`)
       setTimeout(() => setError(null), 5000)
     } finally {
       setIsLoading(false)
@@ -316,9 +317,9 @@ export default function DashboardPage() {
       setSuccessMessage(`✓ ${guest.name} updated successfully!`)
       setTimeout(() => setSuccessMessage(null), 3000)
       await fetchGuests()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error updating guest:", error)
-      setError(`Failed to update guest: ${error.message}`)
+      setError(`Failed to update guest: ${getErrorMessage(error)}`)
       setTimeout(() => setError(null), 5000)
     } finally {
       setIsLoading(false)
@@ -358,9 +359,9 @@ export default function DashboardPage() {
       setSuccessMessage(`✓ Guest deleted successfully!`)
       setTimeout(() => setSuccessMessage(null), 3000)
       await fetchGuests()
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error deleting guest:", error)
-      setError(`Failed to delete guest: ${error.message}`)
+      setError(`Failed to delete guest: ${getErrorMessage(error)}`)
       setTimeout(() => setError(null), 5000)
     } finally {
       setIsLoading(false)

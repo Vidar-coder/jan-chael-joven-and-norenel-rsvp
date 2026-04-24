@@ -1,14 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Heart, RefreshCw, TrendingUp, Mail, Users, MapPin, Calendar, Crown } from "lucide-react"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { PublicImage } from "@/components/ui/public-image"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400"],
-})
+import { useState, useEffect, useCallback } from "react"
+import { RefreshCw, TrendingUp, Users, MapPin, Calendar, Crown } from "lucide-react"
+import { Cinzel } from "next/font/google"
+import Image from "next/image"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -39,16 +34,11 @@ const BOOK_ACCENT = "var(--color-motif-deep)"    // sage green — primary
 const BOOK_DARK = "var(--color-motif-deep)"      // headings / names
 const BOOK_DARKER = "var(--color-motif-deep)"  // body text (steel blue depth)
 const BOOK_CREAM = "var(--color-motif-cream)"    // card surfaces
-const DECO_FILTER_BOOK =
-  "brightness(0) saturate(100%) invert(22%) sepia(88%) saturate(1800%) hue-rotate(185deg) brightness(90%) contrast(105%)"
-
 export function BookOfGuests() {
   const [totalGuests, setTotalGuests] = useState(0)
   const [rsvpCount, setRsvpCount] = useState(0)
   const [confirmedGuests, setConfirmedGuests] = useState<Guest[]>([])
   const [isRefreshing, setIsRefreshing] = useState(false)
-  const [lastUpdate, setLastUpdate] = useState<Date>(new Date())
-  const [previousTotal, setPreviousTotal] = useState(0)
   const [showIncrease, setShowIncrease] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -70,7 +60,7 @@ export function BookOfGuests() {
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
   }
 
-  const fetchGuests = async (showLoading = false) => {
+  const fetchGuests = useCallback(async (showLoading = false) => {
     if (showLoading) setIsRefreshing(true)
     
     try {
@@ -107,7 +97,6 @@ export function BookOfGuests() {
       
       // Show increase animation if count went up
       if (totalGuestCount > totalGuests && totalGuests > 0) {
-        setPreviousTotal(totalGuests)
         setShowIncrease(true)
         setTimeout(() => setShowIncrease(false), 2000)
       }
@@ -115,15 +104,14 @@ export function BookOfGuests() {
       setTotalGuests(totalGuestCount)
       setRsvpCount(attendingGuests.length)
       setConfirmedGuests(sortedGuests)
-      setLastUpdate(new Date())
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Failed to load guests:", error)
     } finally {
       if (showLoading) {
         setTimeout(() => setIsRefreshing(false), 500)
       }
     }
-  }
+  }, [totalGuests])
 
   // Get visible guests (max 4 cards) for carousel
   const getVisibleGuests = () => {
@@ -138,18 +126,18 @@ export function BookOfGuests() {
 
   useEffect(() => {
     // Initial fetch
-    fetchGuests()
+    void fetchGuests()
 
     // Set up automatic polling every 30 seconds for real-time updates
     const pollInterval = setInterval(() => {
-      fetchGuests()
+      void fetchGuests()
     }, 30000) // 30 seconds
 
     // Set up event listener for RSVP updates
     const handleRsvpUpdate = () => {
       // Add a small delay to allow Google Sheets to update
       setTimeout(() => {
-        fetchGuests(true)
+        void fetchGuests(true)
       }, 2000)
     }
 
@@ -159,7 +147,7 @@ export function BookOfGuests() {
       clearInterval(pollInterval)
       window.removeEventListener("rsvpUpdated", handleRsvpUpdate)
     }
-  }, [totalGuests])
+  }, [fetchGuests])
 
   // Auto-rotate carousel every 5 seconds when more than 4 guests
   useEffect(() => {
@@ -192,7 +180,7 @@ export function BookOfGuests() {
 
       {/* Flower decoration — warm brown tint */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">
-        <PublicImage
+        <Image
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -202,7 +190,7 @@ export function BookOfGuests() {
         />
       </div>
       <div className="absolute right-0 top-0 z-0 pointer-events-none">
-        <PublicImage
+        <Image
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -212,7 +200,7 @@ export function BookOfGuests() {
         />
       </div>
       <div className="absolute left-0 bottom-0 z-0 pointer-events-none">
-        <PublicImage
+        <Image
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -222,7 +210,7 @@ export function BookOfGuests() {
         />
       </div>
       <div className="absolute right-0 bottom-0 z-0 pointer-events-none">
-        <PublicImage
+        <Image
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}

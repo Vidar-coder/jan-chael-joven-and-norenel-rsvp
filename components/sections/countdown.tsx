@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Section } from "@/components/section"
 import { motion } from "motion/react"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
+import { Cinzel } from "next/font/google"
 import { siteConfig } from "@/content/site"
 import Counter from "@/components/Counter"
 import { PublicImage } from "@/components/ui/public-image"
@@ -20,19 +20,9 @@ interface CountdownUnitProps {
   label: string
 }
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-})
-
 const cinzel = Cinzel({
   subsets: ["latin"],
   weight: ["700"],
-})
-
-const cinzelRegular = Cinzel({
-  subsets: ["latin"],
-  weight: "400",
 })
 
 // Palette lives in globals.css → @theme inline → --color-motif-*

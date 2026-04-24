@@ -2,25 +2,9 @@
 
 import { Section } from "@/components/section"
 import { siteConfig } from "@/content/site"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { PublicImage } from "@/components/ui/public-image"
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-})
-
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: "400",
-})
-
 
 // Palette lives in globals.css → @theme inline → --color-motif-*
 // Edit there once to update every component.
-
-// Corner decoration - white
-const DECO_FILTER = "brightness(0) invert(1)"
 
 export function Welcome() {
   const brideName = siteConfig.couple.brideNickname || siteConfig.couple.bride

@@ -14,6 +14,7 @@
 
 import { useState, useEffect } from "react"
 import { ImprovedGuestList, Guest } from "@/components/improved-guest-list"
+import { getErrorMessage } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Lock,
@@ -22,8 +23,6 @@ import {
   AlertCircle,
   CheckCircle,
   X,
-  Download,
-  Upload,
 } from "lucide-react"
 
 // ⚠️ IMPORTANT: Replace this with your actual Google Apps Script Web App URL
@@ -91,9 +90,9 @@ export default function ImprovedDashboardPage() {
       }
 
       setGuests(Array.isArray(data) ? data : [])
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error fetching guests:", err)
-      setError(`Failed to load guests: ${err.message}`)
+      setError(`Failed to load guests: ${getErrorMessage(err)}`)
       
       // Show helpful message if API_URL is not configured
       if (API_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
@@ -136,9 +135,9 @@ export default function ImprovedDashboardPage() {
 
       setSuccessMessage(`✓ ${guestData.name} added successfully!`)
       await fetchGuests() // Refresh the list
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error adding guest:", err)
-      setError(`Failed to add guest: ${err.message}`)
+      setError(`Failed to add guest: ${getErrorMessage(err)}`)
     } finally {
       setIsLoading(false)
     }
@@ -176,9 +175,9 @@ export default function ImprovedDashboardPage() {
 
       setSuccessMessage(`✓ ${guest.name} updated successfully!`)
       await fetchGuests() // Refresh the list
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error updating guest:", err)
-      setError(`Failed to update guest: ${err.message}`)
+      setError(`Failed to update guest: ${getErrorMessage(err)}`)
     } finally {
       setIsLoading(false)
     }
@@ -222,9 +221,9 @@ export default function ImprovedDashboardPage() {
 
       setSuccessMessage(`✓ Guest deleted successfully!`)
       await fetchGuests() // Refresh the list
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error deleting guest:", err)
-      setError(`Failed to delete guest: ${err.message}`)
+      setError(`Failed to delete guest: ${getErrorMessage(err)}`)
     } finally {
       setIsLoading(false)
     }
@@ -254,14 +253,6 @@ export default function ImprovedDashboardPage() {
     sessionStorage.removeItem("dashboardAuth")
     setPassword("")
     setGuests([])
-  }
-
-  /**
-   * Handle bulk import from CSV
-   */
-  const handleBulkImport = async (file: File) => {
-    // This is a placeholder - implement CSV parsing as needed
-    setError("Bulk import feature coming soon!")
   }
 
   // ========================================

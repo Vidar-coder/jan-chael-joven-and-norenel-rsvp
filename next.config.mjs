@@ -27,15 +27,20 @@ function buildContentSecurityPolicy(isDevelopment) {
     "base-uri 'self'",
     "object-src 'none'",
     "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
+    // React inline style={{}} uses style attributes; CSP3 checks style-src-attr explicitly in some browsers.
     "style-src 'self' 'unsafe-inline' https:",
+    "style-src-elem 'self' 'unsafe-inline' https:",
+    "style-src-attr 'unsafe-inline'",
     "img-src 'self' data: https: blob:",
-    "font-src 'self' data: https:",
+    "font-src 'self' data: https: blob:",
     `connect-src ${connectSrc.join(" ")}`,
     "media-src 'self' https: data: blob:",
     "worker-src 'self' blob:",
     "manifest-src 'self'",
     "frame-src 'self' https:",
     "frame-ancestors 'self'",
+    // Message wall posts to Google Forms; explicit avoids relying on default-src alone in strict clients.
+    "form-action 'self' https:",
     isDevelopment ? "" : "upgrade-insecure-requests",
   ]
     .filter(Boolean)

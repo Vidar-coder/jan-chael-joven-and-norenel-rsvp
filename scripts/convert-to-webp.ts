@@ -10,6 +10,13 @@ const DIRECTORIES = args.length > 0
       path.resolve(process.cwd(), "public", "images"),
       path.resolve(process.cwd(), "public", "desktop-background"),
       path.resolve(process.cwd(), "public", "mobile-background"),
+      path.resolve(process.cwd(), "public", "decoration"),
+      path.resolve(process.cwd(), "public", "decoration/new"),
+      path.resolve(process.cwd(), "public", "decoration/new/silk"),
+      path.resolve(process.cwd(), "public", "Details"),
+      path.resolve(process.cwd(), "public", "monogram"),
+      path.resolve(process.cwd(), "public", "QR"),
+      path.resolve(process.cwd(), "public", "weddingtimeline"),
     ];
 
 const VALID_INPUT_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG"]);

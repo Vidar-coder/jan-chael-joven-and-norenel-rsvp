@@ -5,8 +5,7 @@ import Link from "next/link"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
 import { Section } from "@/components/section"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
-import { getCloudinaryUrl } from "@/lib/cloudinary"
+import { PublicImage } from "@/components/ui/public-image"
 // Removed circular gallery in favor of a responsive masonry layout
 
 // Palette lives in globals.css → @theme inline → --color-motif-*
@@ -95,9 +94,9 @@ export function Gallery() {
   useEffect(() => {
     if (selectedImage) {
       const next = new window.Image()
-      next.src = getCloudinaryUrl(galleryItems[(currentIndex + 1) % galleryItems.length].image, { width: 1200 })
+      next.src = galleryItems[(currentIndex + 1) % galleryItems.length].image
       const prev = new window.Image()
-      prev.src = getCloudinaryUrl(galleryItems[(currentIndex - 1 + galleryItems.length) % galleryItems.length].image, { width: 1200 })
+      prev.src = galleryItems[(currentIndex - 1 + galleryItems.length) % galleryItems.length].image
     }
   }, [selectedImage, currentIndex])
 
@@ -133,7 +132,7 @@ export function Gallery() {
       >
       {/* Corner decoration + bubbles */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/left-top.png"
           alt=""
           width={300}
@@ -141,7 +140,7 @@ export function Gallery() {
           className="absolute top-0 left-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/right-top.png"
           alt=""
           width={300}
@@ -149,7 +148,7 @@ export function Gallery() {
           className="absolute top-0 right-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/left-bottom.png"
           alt=""
           width={300}
@@ -157,7 +156,7 @@ export function Gallery() {
           className="absolute bottom-0 left-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/right-bottom.png"
           alt=""
           width={300}
@@ -238,7 +237,7 @@ export function Gallery() {
 
                         <div className="relative aspect-[3/4] overflow-hidden">
                           <img
-                            src={getCloudinaryUrl(item.image, { width: 600, quality: "auto" })}
+                            src={item.image}
                             alt={item.text || `Gallery image ${index + 1}`}
                             loading="lazy"
                             decoding="async"
@@ -279,7 +278,7 @@ export function Gallery() {
 
                       <div className="relative aspect-[3/4] md:aspect-square overflow-hidden">
                         <img
-                          src={getCloudinaryUrl(item.image, { width: 500, quality: "auto" })}
+                          src={item.image}
                           alt={item.text || `Gallery image ${index + 1}`}
                           loading="lazy"
                           decoding="async"
@@ -455,7 +454,7 @@ export function Gallery() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
-                  src={getCloudinaryUrl(selectedImage.image || "/placeholder.svg", { width: 1200, quality: "auto" })}
+                  src={selectedImage.image || "/placeholder.svg"}
                   alt={selectedImage.text || "Gallery image"}
                   style={{ 
                     transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoomScale})`, 

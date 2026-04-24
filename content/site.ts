@@ -4,7 +4,7 @@ export const siteConfig = {
     brideNickname: "Norenel", //Ltryl
     groom: "Jan Chael Joven C. Elasigue", //Ltryl B. Benitez
     groomNickname: "Jan Chael",
-    monogram:"/monogram/monogram.png" ,//Ltryl
+    monogram:"/monogram/monogram.webp" ,//Ltryl
     backgroundMusic:"/background_music/I Just Fall In Love Again (MALE KEY) Piano Karaoke by Aldrich Andaya.mp3"
   },
   googleAPI:{
@@ -34,8 +34,8 @@ export const siteConfig = {
   },
   giftRegistry: {
     QR_1:{
-    id: "Gcash",
-    src: "/QR/Gcash.png",
+      id: "Gcash",
+      src: "/QR/Gcash.webp",
     label: "Gcash",
     accountNumber: "Gcash: RO**L C.",
     },
@@ -48,14 +48,14 @@ export const siteConfig = {
     time: "4:00 PM",
     entourageTime: "3:00 PM",
     guestsTime: "3:30 PM",
-    image: "/Details/ceremony1.png",
+    image: "/Details/ceremony1.webp",
   },
   reception: {
     location: "The Jackpot Bar & Grill – Las Vegas",
     venue: "4485 S. Jones Blvd. Las Vegas, NV 89103 U.S.A.",
     date: "October 30, 2026",
     time: "8:00 PM",
-    image: ["/Details/reception.png","/Details/reception_2.png"],
+    image: ["/Details/reception.webp","/Details/reception_2.webp"],
   },                          
   dressCode: {
       theme: "SEMI-FORMAL",
@@ -64,19 +64,19 @@ export const siteConfig = {
       male: "Gentlemen - Barong Tagalog/ Black Pants and Shoes/ White Shirt",
       female: "Ladies - Filipiniana-inspired design in beige or champagne tones",
       notes: "Bridesmaids are requested to wear a long gown in plain purple fabric, with any preferred design. \nGroomsmen are requested to wear a light gray suit paired with a white long-sleeved inner shirt, without a vest, and purple neckties, which will be provided by the couple for uniformity.",
-      photo: "/Details/sponsors.png",
+      photo: "/Details/sponsors.webp",
       palette: "#A68A75,#D6BFA3, #F5EFE6,#EDE3D6",
     },
     guests: {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       notes: "To complement our wedding motif, we respectfully request semi-formal attire in sage green or inspired tones for all guests",
-      photo: ["/Details/Guest.png","/Details/Guest_2.png"],
+      photo: ["/Details/Guest.webp","/Details/Guest_2.webp"],
       palette: " #2F4F3E, #5F7D6B, #A7BFA9, #F4F6F2",
     },
     entourage: {
       notes: "Ladies are requested to wear sage green dresses or gowns (or inspired shades), while gentlemen may wear a sage green coat and tie (or inspired tones).",
-      photo: "/Details/entourage.jpeg",
+      photo: "/Details/entourage.webp",
       palette: "#2F4F3E, #5F7D6B, #A7BFA9, #F4F6F2"
     },
     note: "Ladies are requested to wear sage green dresses or gowns (or inspired shades), while gentlemen may wear a sage green coat and tie (or inspired tones)."

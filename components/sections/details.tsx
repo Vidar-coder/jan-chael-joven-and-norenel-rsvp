@@ -4,7 +4,7 @@ import { Section } from "@/components/section"
 import { useState, useEffect } from "react"
 import { QRCodeSVG } from "qrcode.react"
 import { siteConfig } from "@/content/site"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 import { Cinzel, Cormorant_Garamond } from "next/font/google"
 import {
   Shirt,
@@ -40,10 +40,10 @@ export function Details() {
   const [rotationOffset, setRotationOffset] = useState(0)
   
   const coupleImages = [
-    "/mobile-background/couple (1).jpg",
-    "/mobile-background/couple (2).jpg",
-    "/mobile-background/couple (3).jpg",
-    "/mobile-background/couple (4).jpg",
+    "/mobile-background/couple (1).webp",
+    "/mobile-background/couple (2).webp",
+    "/mobile-background/couple (3).webp",
+    "/mobile-background/couple (4).webp",
   ]
 
   const receptionImages = siteConfig.reception.image
@@ -125,8 +125,8 @@ export function Details() {
 
       {/* Flower decoration - top left corner */}
       <div className="absolute left-0 top-0 z-0 pointer-events-none">
-        <CloudinaryImage
-          src="/decoration/new/left-bottom.png"
+        <PublicImage
+          src="/decoration/new/left-bottom.webp"
           alt=""
           width={300}
           height={300}
@@ -138,8 +138,8 @@ export function Details() {
 
       {/* Flower decoration - top right corner */}
       <div className="absolute right-0 top-0 z-0 pointer-events-none">
-        <CloudinaryImage
-          src="/decoration/new/left-bottom.png"
+        <PublicImage
+          src="/decoration/new/left-bottom.webp"
           alt=""
           width={300}
           height={300}
@@ -151,8 +151,8 @@ export function Details() {
 
       {/* Flower decoration - left bottom corner */}
       <div className="absolute left-0 bottom-0 z-0 pointer-events-none">
-        <CloudinaryImage
-          src="/decoration/new/left-bottom.png"
+        <PublicImage
+          src="/decoration/new/left-bottom.webp"
           alt=""
           width={300}
           height={300}
@@ -164,8 +164,8 @@ export function Details() {
 
       {/* Flower decoration - right bottom corner */}
       <div className="absolute right-0 bottom-0 z-0 pointer-events-none">
-        <CloudinaryImage
-          src="/decoration/new/left-bottom.png"
+        <PublicImage
+          src="/decoration/new/left-bottom.webp"
           alt=""
           width={300}
           height={300}
@@ -207,7 +207,7 @@ export function Details() {
           <div className="relative bg-motif-cream rounded-xl sm:rounded-2xl overflow-hidden border border-motif-deep/20  shadow-[0_16px_40px_rgba(0,0,0,0.18)] hover:shadow-[0_20px_48px_rgba(0,0,0,0.24)] hover:border-motif-deep/80 transition-all duration-300">
             {/* Venue Image */}
             <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[30rem] overflow-hidden">
-              <CloudinaryImage
+              <PublicImage
                 src={siteConfig.ceremony.image}
                 alt={siteConfig.ceremony.location}
                 fill
@@ -346,7 +346,7 @@ export function Details() {
                     index === currentReceptionImageIndex ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <CloudinaryImage
+                  <PublicImage
                     src={src}
                     alt={siteConfig.reception.venue}
                     fill
@@ -491,8 +491,8 @@ export function Details() {
                 For Parents
               </h4>
               <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] max-w-2xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-motif-medium/30 mb-4 sm:mb-6 md:mb-8">
-                <CloudinaryImage
-                  src="/Details/parents.jpeg"
+                <PublicImage
+                  src="/Details/parents.webp"
                   alt="Parents attire — sage green"
                   fill
                   className="object-contain bg-[#FFF7F6]/50 p-2 sm:p-3"
@@ -527,8 +527,8 @@ export function Details() {
                 Principal Sponsors
               </h4>
               <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] max-w-2xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-motif-medium/30 mb-4 sm:mb-6 md:mb-8">
-                <CloudinaryImage
-                  src="/Details/principal.jpeg"
+                <PublicImage
+                  src="/Details/principal.webp"
                   alt="Principal sponsors attire — shades of pink"
                   fill
                   className="object-contain bg-[#FFF7F6]/50 p-2 sm:p-3"
@@ -564,8 +564,8 @@ export function Details() {
               </h4>
 
               <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] max-w-2xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-motif-medium/30 mb-4 sm:mb-6 md:mb-8">
-                <CloudinaryImage
-                  src="/Details/entourage.jpeg"
+                <PublicImage
+                  src="/Details/entourage.webp"
                   alt="Entourage attire — purple"
                   fill
                   className="object-contain bg-[#FFF7F6]/50 p-2 sm:p-3"
@@ -600,8 +600,8 @@ export function Details() {
                 For Bearers
               </h4>
               <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] max-w-2xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-motif-medium/30 mb-4 sm:mb-6 md:mb-8">
-                <CloudinaryImage
-                  src="/Details/ringbearer.jpeg"
+                <PublicImage
+                  src="/Details/ringbearer.webp"
                   alt="Bearers attire — black suit with pink bow tie"
                   fill
                   className="object-contain bg-[#FFF7F6]/50 p-2 sm:p-3"
@@ -630,8 +630,8 @@ export function Details() {
                 Flower Girls
               </h4>
               <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] max-w-2xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-motif-medium/30 mb-4 sm:mb-6 md:mb-8">
-                <CloudinaryImage
-                  src="/Details/flowergirl.jpeg"
+                <PublicImage
+                  src="/Details/flowergirl.webp"
                   alt="Flower girls attire — plain pink gown"
                   fill
                   className="object-contain bg-[#FFF7F6]/50 p-2 sm:p-3"
@@ -660,8 +660,8 @@ export function Details() {
                 Guests Attire
               </h4>
               <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] max-w-2xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-motif-medium/30 mb-4 sm:mb-6 md:mb-8">
-                <CloudinaryImage
-                  src="/Details/NewGuestAttire.png"
+                <PublicImage
+                  src="/Details/NewGuestAttire.webp"
                   alt="Flower girls attire — plain pink gown"
                   fill
                   className="object-contain bg-[#FFF7F6]/50 p-2 sm:p-3"
@@ -709,7 +709,7 @@ export function Details() {
                       transform: `rotate(${currentRotation}deg) ${isActive ? 'scale(1.1)' : 'scale(1)'}`,
                     }}
                   >
-                    <CloudinaryImage
+                    <PublicImage
                       src={image}
                       alt={`Wedding couple ${index + 1}`}
                       fill
@@ -854,7 +854,7 @@ export function Details() {
               {/* Shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-0" />
 
-              <CloudinaryImage
+              <PublicImage
                 src={showImageModal === "ceremony" ? siteConfig.ceremony.image : siteConfig.reception.image[0]}
                 alt={showImageModal === "ceremony" ? ceremonyVenueName : receptionVenueName}
                 fill

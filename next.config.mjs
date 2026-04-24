@@ -54,14 +54,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "https",
         hostname: "**",
       },
     ],
-    // Images are optimized by Cloudinary (f_auto, q_auto) via cloudinaryLoader
     unoptimized: false,
   },
   experimental: {

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 
 type ImageItem = {
   src: string
@@ -69,7 +69,7 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
                 <div className={`${getCardAspect(img)} w-full animate-pulse bg-gradient-to-br from-[#606C60]/30 via-[#E1D5C7]/25 to-[#606C60]/30`} />
               )}
               <div className={`relative w-full ${getCardAspect(img)}`}>
-                <CloudinaryImage
+                <PublicImage
                   src={img.src}
                   alt=""
                   fill
@@ -104,7 +104,7 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
               ‹
             </button>
             <div className="relative w-[90vw] max-w-4xl h-[80vh]">
-              <CloudinaryImage
+              <PublicImage
                 src={filtered[lightboxIdx].src}
                 alt=""
                 fill

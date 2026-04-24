@@ -5,13 +5,7 @@ import Link from "next/link"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
 import { Section } from "@/components/section"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
-import { getCloudinaryUrl } from "@/lib/cloudinary"
-
-/** Returns the Cloudinary URL if CLOUD_NAME is set, otherwise the local public path. */
-function imgSrc(path: string, width: number): string {
-  return getCloudinaryUrl(path, { width, quality: "auto" })
-}
+import { PublicImage } from "@/components/ui/public-image"
 
 /** Falls back to the local public path on any load error (e.g. not yet uploaded). */
 function onImgError(e: React.SyntheticEvent<HTMLImageElement>, fallback: string) {
@@ -109,9 +103,9 @@ export function Gallery() {
   useEffect(() => {
     if (selectedImage) {
       const next = new window.Image()
-      next.src = imgSrc(galleryItems[(currentIndex + 1) % galleryItems.length].image, 1200)
+      next.src = galleryItems[(currentIndex + 1) % galleryItems.length].image
       const prev = new window.Image()
-      prev.src = imgSrc(galleryItems[(currentIndex - 1 + galleryItems.length) % galleryItems.length].image, 1200)
+      prev.src = galleryItems[(currentIndex - 1 + galleryItems.length) % galleryItems.length].image
     }
   }, [selectedImage, currentIndex])
 
@@ -147,7 +141,7 @@ export function Gallery() {
       >
       {/* Corner floral decoration - aligned with Details section */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/left-top.png"
           alt=""
           width={300}
@@ -156,7 +150,7 @@ export function Gallery() {
           style={{ filter: GALLERY_DECO_FILTER }}
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/right-top.png"
           alt=""
           width={300}
@@ -165,7 +159,7 @@ export function Gallery() {
           style={{ filter: GALLERY_DECO_FILTER }}
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/left-bottom.png"
           alt=""
           width={300}
@@ -174,7 +168,7 @@ export function Gallery() {
           style={{ filter: GALLERY_DECO_FILTER }}
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/new/right-bottom.png"
           alt=""
           width={300}
@@ -247,7 +241,7 @@ export function Gallery() {
                       >
                         <div className="relative aspect-[3/4] overflow-hidden">
                           <img
-                            src={imgSrc(item.image, 600)}
+                            src={item.image}
                             onError={(e) => onImgError(e, item.image)}
                             alt={item.text || `Gallery image ${index + 1}`}
                             loading="lazy"
@@ -280,7 +274,7 @@ export function Gallery() {
                     >
                       <div className="relative aspect-[3/4] md:aspect-square overflow-hidden">
                         <img
-                          src={imgSrc(item.image, 500)}
+                          src={item.image}
                           onError={(e) => onImgError(e, item.image)}
                           alt={item.text || `Gallery image ${index + 1}`}
                           loading="lazy"
@@ -451,7 +445,7 @@ export function Gallery() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
-                  src={imgSrc(selectedImage.image, 1200)}
+                  src={selectedImage.image}
                   onError={(e) => onImgError(e, selectedImage.image)}
                   alt={selectedImage.text || "Gallery image"}
                   style={{ 

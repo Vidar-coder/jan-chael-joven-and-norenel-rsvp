@@ -6,7 +6,7 @@ import { siteConfig } from "@/content/site"
 import { MapPin } from "lucide-react"
 import { motion } from "motion/react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -112,7 +112,7 @@ export function WeddingTimeline() {
     >
       {/* Corner floral decoration - white */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -121,7 +121,7 @@ export function WeddingTimeline() {
           style={{ transform: "scaleY(-1)", filter: DECO_FILTER_WHITE }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -130,7 +130,7 @@ export function WeddingTimeline() {
           style={{ transform: "scaleX(-1) scaleY(-1)", filter: DECO_FILTER_WHITE }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -139,7 +139,7 @@ export function WeddingTimeline() {
           style={{ filter: DECO_FILTER_WHITE }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/flower-decoration-left-bottom-corner2.png"
           alt=""
           width={300}
@@ -352,7 +352,7 @@ function IconMark({
 }) {
   if (imageSrc) {
     return (
-      <CloudinaryImage
+      <PublicImage
         src={imageSrc}
         alt=""
         width={96}

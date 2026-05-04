@@ -92,20 +92,14 @@ export default function Home() {
               <Messages />
               <Details />
               {/* <GuestInformation /> */}
-              <WeddingTimeline />
-      
+              <WeddingTimeline />    
               <Entourage />
-
               <GuestList />
-
               <BookOfGuests />
               <Registry />
               {/* <PrincipalSponsors /> */}
               <FAQ />
-
-
               <SnapShare />
-
               <Footer />
             </div>
           </div>

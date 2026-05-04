@@ -6,7 +6,7 @@ import { motion } from "motion/react"
 import { Cinzel } from "next/font/google"
 import { siteConfig } from "@/content/site"
 import Counter from "@/components/Counter"
-import { PublicImage } from "@/components/ui/public-image"
+import Image from "next/image"
 
 interface TimeLeft {
   days: number
@@ -217,7 +217,7 @@ export function Countdown() {
           className="relative"
         >
           <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] lg:w-[36rem] lg:h-[36rem] xl:w-[40rem] xl:h-[40rem] opacity-90">
-            <PublicImage
+            <Image
               src={siteConfig.couple.monogram}
               alt={`${groomNickname} & ${brideNickname} Monogram`}
               fill

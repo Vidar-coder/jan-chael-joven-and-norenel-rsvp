@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { siteConfig } from '@/content/site';
-import { PublicImage } from '@/components/ui/public-image';
+import Image from 'next/image';
 
 interface HeroProps {
   onOpen: () => void;
@@ -90,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpen, visible }) => {
                 animation: contentVisible ? 'gentleFloat 3s ease-in-out infinite' : 'none'
               }}
             >
-              <PublicImage
+              <Image
                 src={siteConfig.couple.monogram}
                 alt="Monogram"
                 fill

@@ -6,7 +6,7 @@ import { siteConfig } from "@/content/site"
 import { MapPin } from "lucide-react"
 import { motion } from "motion/react"
 import { Cinzel } from "next/font/google"
-import { PublicImage } from "@/components/ui/public-image"
+import Image from "next/image"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -40,7 +40,7 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    time: guestsTime,
+    time: "4:00 PM",
     title: "Arrival",
     // description: "Please arrive on time to find your seat, settle in, and get ready for the celebration.",
     location: ceremonyVenue,
@@ -48,7 +48,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/arrivalimage.webp",
   },
   {
-    time: ceremonyTime,
+    time: "4:30 PM",
     title: "Wedding Ceremony",
     // description: `Join us as ${groomNickname} & ${brideNickname} exchange vows and begin their life together.`,
     location: ceremonyVenue,
@@ -56,7 +56,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/WeddingCeremony.webp",
   },
   {
-    time: "6:00 PM",
+    time: "5:30 PM",
     title: "Photos",
     // description: "We are having an unplugged ceremony, meaning we kindly ask all guests to put away their phones and cameras. We want everyone to be fully in the moment with us. Don't worry—our professional photographer will capture all the special moments, and we'll be happy to share them with you later!",
     location: ceremonyVenue,
@@ -64,7 +64,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/PhotoSession.webp",
   },
   {
-    time: "7:00 PM",
+    time: "6:30 PM",
     title: "Cocktail Hour",
     // description: "Enjoy drinks and light bites as we transition into the reception and mingle with guests.",
     location: receptionVenue,
@@ -72,7 +72,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/CockTailHour.webp",
   },
   {
-    time: receptionTime,
+    time: "7:00 PM",
     title: "Program Starts",
     // description: `Celebrate the grand entrance of ${groomNickname} & ${brideNickname} and the start of the evening festivities.`,
     location: receptionVenue,
@@ -80,7 +80,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/reception welcom.webp",
   },
   {
-    time: "9:00 PM",
+    time: "7:30 PM",
     title: "Dinner Service",
     // description: "Share a relaxed meal together as we continue the celebration.",
     location: receptionVenue,
@@ -88,7 +88,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/DinnerService.webp",
   },
   {
-    time: "10:00 PM",
+    time: "9:30 PM",
     title: "Party",
     // description: "Let's dance the night away and celebrate this new chapter!",
     location: receptionVenue,
@@ -345,7 +345,7 @@ function IconMark({
 }) {
   if (imageSrc) {
     return (
-      <PublicImage
+      <Image
         src={imageSrc}
         alt=""
         width={96}

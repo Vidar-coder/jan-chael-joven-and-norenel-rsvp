@@ -14,11 +14,11 @@ const cinzel = Cinzel({
 })
 
 // const { groomNickname, brideNickname } = siteConfig.couple
-const ceremonyTime = siteConfig.ceremony.time
-const guestsTime = siteConfig.ceremony.guestsTime ?? "1:30 PM"
+// const ceremonyTime = siteConfig.ceremony.time
+// const guestsTime = siteConfig.ceremony.guestsTime ?? "1:30 PM"
 const ceremonyVenue = siteConfig.ceremony.location
 const receptionVenue = siteConfig.reception.location
-const receptionTime = siteConfig.reception.time
+// const receptionTime = siteConfig.reception.time
 
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 // This section sits on a darker background, so render timeline text/icons in white.
